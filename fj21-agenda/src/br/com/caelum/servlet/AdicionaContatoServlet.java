@@ -15,23 +15,30 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.caelum.jdbc.dao.ContatoDao;
 import br.com.caelum.jdbc.modelo.Contato;
 
+
+
 public class AdicionaContatoServlet extends HttpServlet {
- protected void service(HttpServletRequest request,
+ 
+	
+protected void service(HttpServletRequest request,
  HttpServletResponse response)
  throws IOException, ServletException {
-  // busca o writer
+ // busca o writer
  PrintWriter out = response.getWriter();
 
-  //buscando os parâmetros no request
+ // buscando os parâmetros no request
  String nome = request.getParameter("nome");
  String endereco = request.getParameter("endereco");
  String email = request.getParameter("email");
- String dataEmTexto = request.getParameter("dataNascimento");
+ String dataEmTexto = request
+ .getParameter("dataNascimento");
  Calendar dataNascimento = null;
 
  // fazendo a conversão da data
  try {
- Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
+ Date date =
+ new SimpleDateFormat("dd/MM/yyyy")
+ .parse(dataEmTexto);
  dataNascimento = Calendar.getInstance();
  dataNascimento.setTime(date);
  } catch (ParseException e) {
@@ -39,7 +46,7 @@ public class AdicionaContatoServlet extends HttpServlet {
  return; //para a execução do método
  }
 
-// monta um objeto contato
+ // monta um objeto contato
  Contato contato = new Contato();
  contato.setNome(nome);
  contato.setEndereco(endereco);
@@ -49,8 +56,8 @@ public class AdicionaContatoServlet extends HttpServlet {
  // salva o contato
  ContatoDao dao = new ContatoDao();
  dao.adiciona(contato);
-		
-		//imprime o nome do contato que foi adicionado
+
+ // imprime o nome do contato que foi adicionado
 		
 		out.println("<html>");
 		out.println("<body>");
