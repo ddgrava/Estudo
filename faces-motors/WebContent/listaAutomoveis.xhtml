@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+	<h:body>
+		<h:dataTable value="#{automovelBean.automoveis}" var="automovel">
+			<h:column>
+				#{automovel.marca}
+			</h:column>
+			<h:column>
+				#{automovel.modelo}
+			</h:column>
+			<h:column>
+				#{automovel.anoFabricacao}
+			</h:column>
+			<h:column>
+				#{automovel.anoModelo}
+			</h:column>
+			<h:column>
+				#{automovel.observacao}
+			</h:column>
+		</h:dataTable>
+	</h:body>
+</html>
